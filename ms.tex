@@ -1,0 +1,131 @@
+\documentclass{emulateapj} 
+ 
+\usepackage[dvipdf]{epsfig} 
+\usepackage[dvips]{rotating}
+\usepackage{subfigure}
+
+\newcommand{\IRAS}{{\it IRAS}}
+\newcommand{\HERSCHEL}{{\it Herschel}}
+\newcommand{\SPITZER}{{\it Spitzer}}
+\newcommand{\WISE}{{\it WISE}}
+
+\bibpunct{(}{)}{;}{a}{}{,} 
+ 
+\shorttitle{WISE/NEOWISER Coadds}
+ 
+\shortauthors{Meisner et al.} 
+ 
+\begin{document} 
+\title{Full-depth Coadds of the WISE and First-year NEOWISE-Reactivation Images}
+
+\author{Aaron M. Meisner\altaffilmark{1,2}}
+\author{Dustin Lang\altaffilmark{3}}
+\author{David J. Schlegel\altaffilmark{2}}
+
+\altaffiltext{1}{Berkeley Center for Cosmological Physics, Berkeley, CA 94720, USA}
+\altaffiltext{2}{Lawrence Berkeley National Laboratory, Berkeley, CA, 94720, USA}
+\altaffiltext{3}{Department of Astronomy \& Astrophysics and Dunlap Institute, University of Toronto, Toronto, ON M5S 3H4, Canada}
+
+\begin{abstract} 
+Thanks to the Wide-field Infrared Survey Explorer (WISE) mission's
+NEOWISE-Reactivation (NEOWISER) program, an entire year of post-reactivation W1
+and W2 exposures were made publicly available in 2015. This data set consists of
+$\sim$2.5 million exposures in each band, effectively doubling the amount
+of WISE imaging available at 3.4$\mu$m and 4.6$\mu$m relative to the AllWISE
+release. We have created the first ever full-sky set of coadds combining all 
+publicly available W1 and W2 exposures from both the AllWISE and 
+NEOWISER mission phases. We employ an adaptation of the unWISE image coaddition
+framework \citep{lang14}, which preserves the native WISE angular resolution 
+and is optimized for forced photometry. By incorporating two additional scans
+of the entire sky, we not only improve the W1/W2 depths, but also largely
+eliminate time-dependent artifacts such as off-axis moonlight contamination.
+We anticipate that our new coadds will have a broad range of 
+applications, including target selection for upcoming spectroscopic cosmology 
+surveys, discovery of massive galaxy clusters at high redshift, and 
+identification of high-redshift quasars. In particular, our full-depth 
+WISE+NEOWISER coadds will be an important input for the Dark Energy 
+Spectroscopic Instrument (DESI) selection of luminous red galaxy and quasar 
+targets. Our full-depth W1/W2 coadds are already in use within the 
+DECam Legacy Survey (DECaLS) and Mayall z-band Legacy Survey (MzLS) reduction 
+pipelines. Much more work still remains in order to fully leverage NEOWISER 
+imaging for astrophysical applications beyond the solar system.
+\end{abstract}  
+ 
+\keywords{methods: data analysis -- surveys -- techniques: image processing} 
+
+\section{Introduction}
+
+The Wide-field Infrared Survey Explorer \cite[WISE; ][]{wright10} has performed
+a full-sky imaging survey in four broad mid-infrared bandpasses centered at 
+3.4, 4.6, 12 and 22 microns, labeled W1-W4 from blue to red. WISE has 
+dramatically enhanced our knowledge of the mid-infrared sky, and publicly 
+released numerous catalog and imaging data products of high value to the 
+astronomical community.
+
+More specifically, WISE launched in December 2009, and undertook a seven 
+month, full-sky survey in all of W1-W4 from February 2010 through August
+2010. In September 2010, the solid hydrogen cryogen used to cool the W3 and W4 
+instrumentation was depleted, significantly reducing the quality of W3 
+imaging and rendering W4 unusable. Nevertheless, WISE continued surveying 
+the sky from September 2010 to February 2011 in W1 and W2, including 
+a portion of the mission referred to as NEOWISE \citep{neowise}. In February 
+2011 WISE was placed in hibernation. In October 2013, WISE was reactivated, and
+recommenced surveying the sky in W1 and W2. This W1/W2 survey is referred to as 
+NEOWISE-Reactivation (NEOWISER) and is expected to continue until 2017.
+Importantly, the NEOWISER data are of very nearly the same high quality as
+pre-hibernation W1/W2 WISE imaging \citep{neowiser}.
+
+Several data products consisting of full-sky, stacked WISE imaging
+are currently available for the first 13 months of data.
+The WISE team has created a set
+of ``Atlas'' coadds smoothed by the point spread function (PSF)
+using the first 7 months of data (the All-Sky release), and the first
+13 months of data (the AllWISE release).
+In an independent processing effort, \cite{lang14} has 
+produced custom ``unWISE'' stacks analogous to the AllWISE Atlas images,
+but at the full spatial resolution of the instrument. These unWISE
+stacks are optimized for forced photometry, and have proven to be 
+an important input for eBOSS target selection 
+\citep{lang14b, eboss_qso, eboss_lrg}.
+
+However, until now, no full-sky set of W1/W2 coadds combining
+all pre and post reactivation exposures have existed. The primary motivation
+for such a data product is the enhanced infrared depths achieved, which
+will improve the utility of WISE in selecting higher-redshift 
+spectroscopic targets, in particular for the upcoming
+Dark Energy Spectroscopic Instrument \citep[DESI,][]{desi}. Additionally, 
+folding in two additional scans of WISE data at each sky location allows 
+time-dependent artifacts to be nulled, largely eliminating spatial 
+nonuformities in image quality and derivative catalogs.
+
+Here we present a new set of full-sky coadds generated by
+combining all publicly available W1/W2 exposures from the AllWISE and NEOWISER
+programs. These `full-depth' coadds are publicly available 
+online\footnote{http://unwise.me}. In $\S$1 we briefly describe the W1/W2 
+single-exposure data set on which our full-depth coadds are based. In $\S$2
+we describe an empirical, custom photometric calibration we derived in order 
+to combine pre and post reactivation WISE images. In $\S$3 we describe our
+rejection of time-dependent artifacts, particularly off-axis Moon 
+contamination. In $\S$4 we describe our strategy for recovering 
+Moon-contaminated exposures. In $\S$5 we highlight some important aspects 
+of the full-sky set of full-depth coadds generated by our processing. In 
+$\S$6, we present a preliminary investigation of the improvements in WISE 
+depth which have resulted from doubling the amount of W1/W2 imaging. We 
+conclude in $\S$7 with a brief discussion of future uses of our present 
+WISE+NEOWISER coadds, as well as remaining work to be done with existing and 
+future NEOWISER imaging.
+
+% mention DECaLS in intro and add footnote to legacysurvey website
+
+%In the remainder of this proposal, we will refer to the data from the
+%first 13 months of the mission as simply ``WISE'', in contrast to
+%data from the current ``NEOWISER'' mission phase.
+
+\acknowledgments{
+We thank Roc Cutri for his guidance in making use of the WISE data products. 
+}
+
+\bibliographystyle{apj}
+\bibliography{fulldepth_neo1.bib}
+
+\end{document}
