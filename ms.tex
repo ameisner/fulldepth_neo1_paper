@@ -392,11 +392,57 @@ that every pixel has $\ge$18 epochs in W1 and $\ge$15 epochs in W2.
 \section{Preliminary Depth Characterization}
 \label{sec:depth}
 
-% add footnote to legacysurvey website in section that compares
-% wise depths in DECaLS DR1 versus DR2
+It is important to quantify the effect of increased coverage on
+the W1/W2 depths achieved by catalogs based on our AllWISE+NEOWISER coadds 
+relative to those based on the AllWISE-only coadds of \cite{lang14}. A
+full characterization should systematically explore a range of 
+ecliptic and galactic latitudes, to consider the full spectrum of interplay
+between decreased statistical noise and confusion. For isolated sources in the 
+sky noise limit, we would expect a doubling of the W1/W2 imaging data
+to increase the depth in each band by 0.38 mag.
+
+The only existing catalogs based on our AllWISE+NEOWISER W1/W2 coadds
+are forced photometry catalogs corresponding to DECam Legacy
+Survey\footnote{http://legacysurvey.org} (DECaLS) DR2 optical sources. 
+Optical sources from DECaLS DR1 are accompanied by forced based on the
+\cite{lang14} W1/W2 coadds. Therefore, comparing the S/N of W1/W2
+fluxes in DR2 versus DR1 allows us to obtain a preliminary estimate of the 
+increased depths in regions of low ecliptic and high galactic latitude.
+
+We have cross-matched DECaLS DR1 and DR2 sources, and selected samples of
+faint WISE detections in DR1 for each band, $5<$ (W? S/N) $<6$. We find that
+in DECaLS DR2, these same sources have on average 1.33$\times$ (1.19$\times$)
+higher S/N in W1 (W2). For comparison, the expectation based purely on
+reduced statistical noise in the WISE imaging is 1.38$\times$ improvement in
+S/N.
+
+Much more work is needed to characterize the increased sensitivity
+of WISE to faint sources due to the inclusion of NEOWISER
+imaging, as this will inform forecasts about the final depths expected
+upon WISE's permanent retirement.
 
 \section{Conclusion \& Future Work}
 \label{sec:future}
+
+We have created a full-sky set of W1/W2 coadds which combine all publicly
+available exposures from both the AllWISE and NEOWISER releases. Doubling the 
+amount of WISE imaging relative to the AllWISE release has resulted in improved
+W1/W2 depths and allowed for the elimination of nearly all time-dependent 
+artifacts. Our new AllWISE+NEOWISER W1/W2 coadds are publicly available
+via http://unwise.me.
+
+Although the present analysis constituted a significant data processing 
+endeavor, it represents only a small fraction of the work that must
+be done to maximize science return from the NEOWISER imaging data set.
+Creation of time-resolved coadds spanning the $\sim$5 year WISE-NEOWISER
+time baseline would enable a wealth of important time-domain projects,
+ranging from brown dwarf searches to quasar variability. As
+additional years worth of NEOWISER data become publicly available, it
+will be necessary to continue updating the full-depth WISE+NEOWISER coadds
+to maximize the achieved depth. Finally, the creation WISE-only (as opposed
+to forced photometry) catalogs based on deep coadds which include
+NEOWISER images will be needed in order to enable a variety of exciting
+discoveries.
 
 \acknowledgments{
 We thank Roc Cutri for his guidance in making use of the WISE data products. 
