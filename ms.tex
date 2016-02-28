@@ -152,7 +152,7 @@ assembly temperature, and have been shown to differ by up to several percent
 from time-dependent gain variations measured empirically with single-exposure
 photometry of standard sources \citep{cutri13, cutri15}.
 
-We therefore sought to achieve an empirical photometric calibration
+We therefore sought to achieve an empirical relative photometric calibration
 across all mission phases accurate at the several mmag level. Our basic
 strategy was to analyze repeat measurements of compact sources near the 
 ecliptic poles, where WISE gathers data every $\sim$$95$ minutes throughout the 
@@ -169,17 +169,24 @@ These spatial, magnitude and flag cuts yield samples of $\sim$109,000
 photometry using \verb|djs_phot| with a 27.5$''$ radius for each calibrator 
 source in every L1b exposure in which it appears sufficiently far from the 
 image boundary. This results in a catalog of $\sim$45M ($\sim$15M) W1 (W2) 
-single-epoch aperture fluxes which form the basis for our derived 
-time-dependent zero points. The typical calibrator source contributes 
+single-epoch aperture fluxes (in units of DN) which form the basis for our 
+derived time-dependent zero points. The typical calibrator source contributes 
 $\gtrsim$400 epochs of photometry.
 
-We sought a photometic calibration with time resolution of one day. 
-% mention that single-epoch fluxes grouped into one-day bins
-% mention that single-epoch fluxes of each source were normalized
-% to the average (median?) flux measured during the All-sky phase, and 
-% that the AllWISE phase zero points were taken at face value, and
-% that we used the single-exp ecl pole photometry to verify that the zero point 
-% was stable at the $<=1 mmag$ level of the All-sky phase of the mission
+We sought a photometic calibration with time resolution of one day. We
+grouped the photometric measurements in two ways. For each unique source,
+we lumped all of its All-sky phase measurements together to obtain its median
+flux (DN) in our aperture photometry system during this phase. This is
+justified because the All-sky release photometric zero points are known
+to be remarkably stable. Indeed, using our ecliptic pole singe-exposure 
+photometry database, we were able to confirm that the All-sky phase zero point 
+was stable at the $\le$2 mmag level in each band. For every aperture
+flux after the All-sky phase, we calculated a gain enhancement factor
+implied by that measurement relative to the appropriate sources
+median All-sky phase flux. We then grouped these gain enhancement factors
+into one-day bins, and quoted the median per bin as the multiplicative
+change in zero point relative to the All-sky zero point. We took the 
+All-sky zero points (20.752 in W1 and 19.596 in W2) at face value.
 
 Figure 1 shows our derived zero points for each WISE mission phase as 
 compared to the \verb|MAGZP| values obtained from the L1b headers. When
