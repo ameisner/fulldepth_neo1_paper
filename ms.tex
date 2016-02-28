@@ -172,14 +172,14 @@ updates/changes:
 
 \begin{itemize}
 \item We include all publicly available NEOWISER W1 and W2 exposures, 
-approximately doubling the number of input L1b frames.
+approximately doubling the number of input L1b frames relative to \cite{lang14}.
 \item We adopt custom zero points based on repeat photometry at the ecliptic 
 poles. In contrast, the \cite{lang14} unWISE processing adopted zero points 
 based on the L1b header metadata.
 \item We explicitly reject exposures contaminated by the Moon and/or solar 
-system planets. No such rejection was included in the original unWISE W1/W2 
-coadds, although these and other artifacts were addressed to some extent via 
-general-purpose outlier rejection measures.
+system planets. No such rejection was included in the \cite{lang14} unWISE 
+W1/W2 coadds, although these and other artifacts were addressed to some extent 
+via general-purpose outlier rejection.
 \item In this work we attempt to recover Moon-affected frames by applying 
 polynomial background level corrections to the contaminated exposures.
 \end{itemize}
@@ -187,8 +187,8 @@ polynomial background level corrections to the contaminated exposures.
 The outputs generated in this work follow the same data model as those of 
 \cite{lang14}. For each tile, a stacked image is created, plus auxiliary
 maps of useful quantities such as the per-pixel inverse variance and integer 
-coverage. Both our full-depth stacks and those of \cite{lang14} have units of 
-Vega nanomaggies.
+coverage. Like those of \cite{lang14}, our coadds have units of Vega 
+nanomaggies.
 
 \section{Custom Photometric Calibration}
 \label{sec:calib}
@@ -367,6 +367,23 @@ by scattered light halos from bright solar system planets.
 \section{Overview of Results}
 \label{sec:results}
 
+Figures 4 and 5 show large-scale renderings of our full-depth coadds 
+over the north and south Galactic caps respectively. It is 
+apparent that the Moon contamination has been completely eliminated in
+W1 and dramatically reduced in W2. It is possible that simply folding in 
+additional NEOWISER W2 frames from forthcoming data releases will diminish the 
+remaining Moon imprint to such an extent that no additional processing 
+modifications will be required to address this issue.
+
+Figure 6 shows zoom-ins of low ecliptic latitude fields which illustrate
+visually the reduction in statistical noise which has been achieved
+by doubling the number of input exposures.
+
+Given that we imposed various cuts to eliminate time-dependent artifacts,
+it is reasonable to ask whether we have created any zero-coverage holes
+as a result. We have checked all 18,240 of our integer coverage maps, and find
+that every pixel has $\ge$18 epochs in W1 and $\ge$15 epochs in W2.
+
 % figure showing before/after of SGP on large scales in both W1/W2
 % figure showing close-up at low ecl latitude with reduced noise
 
@@ -375,12 +392,11 @@ by scattered light halos from bright solar system planets.
 \section{Preliminary Depth Characterization}
 \label{sec:depth}
 
-\section{Conclusion \& Future Work}
-\label{sec:future}
-
 % add footnote to legacysurvey website in section that compares
 % wise depths in DECaLS DR1 versus DR2
 
+\section{Conclusion \& Future Work}
+\label{sec:future}
 
 \acknowledgments{
 We thank Roc Cutri for his guidance in making use of the WISE data products. 
