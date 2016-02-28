@@ -321,6 +321,47 @@ frames according to the procedure described below in $\S$\ref{sec:recover}.
 \section{Recovering Contaminated Frames}
 \label{sec:recover}
 
+Although we were able to dramatically reduce the impact of Moon contamination
+on our coadds with the exposure rejection procedure of $\S$\ref{sec:moon},
+we would ideally like to recover as much Moon-contaminated data as possible,
+rather than simply discard it all outright. To that end, we have added an 
+after-burner step to our coaddition procedure which attempts to salvage those 
+frames which were flagged with \verb|MOON_MASKED| and displayed abnormally 
+large pixel value standard deviations. The procedure we employ is a variant of 
+that described in $\S6.4.1$ of \cite{meisner14}.
+
+The first two rounds of unWISE coaddition still proceed exactly as 
+described in \cite{lang14}. These steps yield a Moon-free stack which we 
+subsequenty use as a reference image to compare against, and derive low-order 
+corrections for, each Moon-contaminated frame.
+
+For each frame initially rejected on the basis of Moon contamination, we 
+first resample the exposure onto the coadd astrometry. We then divide
+the exposure into quadrants which we analyze separately. For each quadrant,
+we will attempt to model the Moon contamination with a polynomial 
+offset as a function of L1b $x$, $y$ pixel coordinates. We begin by masking out 
+the brightest and faintest 5\% of pixels in the reference coadd, since pixels
+with bright compact sources will not be very informative for background level
+modeling. We then fit the difference between the masked L1b quadrant and masked
+reference coadd with a fourth order polynomial in L1b $x$, $y$ coordinates. We 
+evaluate the chi-squared of this model, using the reference coadd's per-pixel
+standard deviation to construct per-pixel uncertainty estimates.
+
+For each quadrant, we deem the polynomial correction to be a satisfactory 
+description of the scattered moonlight if the mean per-pixel chi-squared is 
+less than 2.5. In that case, we then subtract the polynomial correction from 
+the quadrant, and consider the quadrant ``recovered''. Quadrants with poor 
+chi-squared are discarded and remain excluded from the coadd. Once a list of 
+all recovered quadrants has been assembled, these are accumulated into the 
+existing reference coadd to produce a final set of outputs for the tile under 
+consideration.
+
+Figure 3 provides an illustration of our polynomial background modeling
+procedure. We were able to recover 54\% of Moon-contaminated data
+in W1 and 33\% in W2. We also apply this polynomial
+correction procedure to frames that we flagged as potentially affected
+by scattered light halos from bright solar system planets.
+
 % quadrant warping example figure
 
 \section{Overview of Results}
@@ -343,6 +384,17 @@ frames according to the procedure described below in $\S$\ref{sec:recover}.
 
 \acknowledgments{
 We thank Roc Cutri for his guidance in making use of the WISE data products. 
+We thank Stephen Bailey for downloading the L1b images to NERSC. We thank
+Doug Finkbeiner for providing access to the big-memory computers which
+were used to run coadds near the ecliptic poles. We thank Peter Nugent for 
+providing HPC assistance. We thank many members of the DECaLS/MzLS data team for
+valuable feedback, especially Arjun Dey, Doug Finkbeiner, John Moustakas
+and Bob Blum.
+
+This research used resources of the National Energy Research Scientific 
+Computing Center, a DOE Office of Science User Facility supported by the Office
+of Science of the U.S. Department of Energy under Contract No. 
+DE-AC02-05CH11231.
 
 This research made use of the NASA Astrophysics Data System (ADS) and the IDL 
 Astronomy User's Library at Goddard. \footnote{Available at 
@@ -351,7 +403,7 @@ Astronomy User's Library at Goddard. \footnote{Available at
 This research makes use of data products from the Wide-field Infrared
 Survey Explorer, which is a joint project of the University of California, Los
 Angeles, and the Jet Propulsion Laboratory/California Institute of Technology,
-funded by the National Aeronautics and Space Administration. This publication
+funded by the National Aeronautics and Space Administration. This research
 also makes use of data products from NEOWISE, which is a project of the Jet
 Propulsion Laboratory/California Institute of Technology, funded by the
 Planetary Science Division of the National Aeronautics and Space
