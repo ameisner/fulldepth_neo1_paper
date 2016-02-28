@@ -142,7 +142,61 @@ Possible Association List for each mission phase
 
 \section{Custom Photometric Calibration}
 \label{sec:calib}
+In order to combine frames across multiple mission phases, it is necessary
+to place all exposures on a common photometric calibration such that
+the multiplicative scalings of all images are consistent. Each L1b
+image includes a \verb|MAGZP| header keyword which gives the official
+Vega zero-point of that exposure. These zero-points are essentially
+predictions of system throughput based on predictors such as beam splitter
+assembly temperature, and have been shown to differ by up to several percent 
+from time-dependent gain variations measured empirically with single-exposure
+photometry of standard sources \citep{cutri13, cutri15}.
 
+We therefore sought to achieve an empirical photometric calibration
+across all mission phases accurate at the several mmag level. Our basic
+strategy was to analyze repeat measurements of compact sources near the 
+ecliptic poles, where WISE gathers data every $\sim$$95$ minutes throughout the 
+entire mission. Specifically, our sample consists of moderately bright,
+unsaturated compact sources with $|\beta| > 85^{\circ}$, and avoiding a wedge 
+defined by $-90^{\circ}$$<$$\lambda$$<25^{\circ}$ to exclude the LMC. The 
+positions and nominal average magnitudes of our moderately bright source
+sample were drawn from the AllWISE Source Catalog, selecting sources with 
+10.6 $<$ \verb|w1mpro| $<$ 13.1 and 9.2 $<$ \verb|w2mpro| $<$ 11.7 and with
+\verb|w?cc_map|=0 in the band of interest.
+
+These spatial, magnitude and flag cuts yield samples of $\sim$109,000 
+($\sim$27,000) unique calibrator sources in W1 (W2). We perform aperture 
+photometry using \verb|djs_phot| with a 27.5$''$ radius for each calibrator 
+source in every L1b exposure in which it appears sufficiently far from the 
+image boundary. This results in a catalog of $\sim$45M ($\sim$15M) W1 (W2) 
+single-epoch aperture fluxes which form the basis for our derived 
+time-dependent zero points. The typical calibrator source contributes 
+$\gtrsim$400 epochs of photometry.
+
+We sought a photometic calibration with time resolution of one day. 
+% mention that single-epoch fluxes grouped into one-day bins
+% mention that single-epoch fluxes of each source were normalized
+% to the average (median?) flux measured during the All-sky phase, and 
+% that the AllWISE phase zero points were taken at face value, and
+% that we used the single-exp ecl pole photometry to verify that the zero point 
+% was stable at the $<=1 mmag$ level of the All-sky phase of the mission
+
+Figure 1 shows our derived zero points for each WISE mission phase as 
+compared to the \verb|MAGZP| values obtained from the L1b headers. When
+using our custom zero points to scale L1b images, we employ an 
+interpolation scheme based on a series of tapered polynomials and 
+error functions, meant to smooth out noise in our per-day zero point
+determinations. In general, our per-day zero points agree reasonably
+well with the \verb|MAGZP| values, although there are often 
+percent-level differences, and at times disagreement at the several percent
+level. In some cases the time-trends within a particular mission phase
+show qualitative disagreement (e.g. both W1 and W2 during the NEOWISE
+mission phase).
+
+% do i want to mention comparison between ecliptic north and south poles ??
+
+% caption of zero point figure needs to clarify the '4band', '3band', '2band' ..
+% terminology
 
 \section{Removing Time-dependent Artifacts}
 \label{sec:moon}
@@ -165,11 +219,24 @@ Possible Association List for each mission phase
 
 \acknowledgments{
 We thank Roc Cutri for his guidance in making use of the WISE data products. 
-}
+
+This research made use of the NASA Astrophysics Data System (ADS) and the IDL 
+Astronomy User's Library at Goddard. \footnote{Available at 
+\texttt{http://idlastro.gsfc.nasa.gov}}
+
+This research makes use of data products from the Wide-field Infrared
+Survey Explorer, which is a joint project of the University of California, Los
+Angeles, and the Jet Propulsion Laboratory/California Institute of Technology,
+funded by the National Aeronautics and Space Administration. This publication
+also makes use of data products from NEOWISE, which is a project of the Jet
+Propulsion Laboratory/California Institute of Technology, funded by the
+Planetary Science Division of the National Aeronautics and Space
+Administration. }
 
 \bibliographystyle{apj}
 \bibliography{fulldepth_neo1.bib}
 
 % cite software packages such as numpy, scipy, matplotlib ??
+% mention idlutils
 
 \end{document}
