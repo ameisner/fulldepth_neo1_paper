@@ -152,7 +152,7 @@ Possible Association List for each mission phase
 
 % should this section go before the ``data'' section ??
 
-To coadd the W1/W2 single exposures, we make use of the \cite{lang14}
+To stack the W1/W2 single exposures, we make use of the \cite{lang14}
 unWISE coaddition framework, and perform our image processing with an 
 adaptation of the codebase from that work. We briefly mention
 a few of the salient aspects of the unWISE coaddition methodology here; for
@@ -161,10 +161,10 @@ a full discussion see \cite{lang14}.
 % mention that we use the same tile centers as Atlas and original unWISE
 Like the official WISE Atlas coadds, unWISE processing divides the sky
 into a set of 18240 $\sim$1.5$^{\circ}$$\times$$\sim$1.5$^{\circ}$ tiles
-arranged along iso-declination rings. Unlike the Atlas tiles, the
+arranged along iso-declination rings. Unlike the Atlas stacks, the
 unWISE code uses Lanczos interpolation to preserve the native WISE 
 angular resolution during coaddition, creating stacked outputs which are 2048 
-pixels on a side, with pixels of size 2.75$''$.
+pixels on a side, with 2.75$''$ pixels.
 
 During the course of this work, various modifications have been made to the
  unWISE codebase and methodology. Here we highlight the important 
@@ -172,7 +172,8 @@ updates/changes:
 
 \begin{itemize}
 \item We include all publicly available NEOWISER W1 and W2 exposures, 
-approximately doubling the number of input L1b frames relative to \cite{lang14}.
+approximately doubling the number of input L1b frames relative to the 
+\cite{lang14} processing.
 \item We adopt custom zero points based on repeat photometry at the ecliptic 
 poles. In contrast, the \cite{lang14} unWISE processing adopted zero points 
 based on the L1b header metadata.
@@ -185,9 +186,9 @@ polynomial background level corrections to the contaminated exposures.
 \end{itemize}
 
 The outputs generated in this work follow the same data model as those of 
-\cite{lang14}. For each tile, a stacked image is created, plus auxiliary
-maps of useful quantities such as the per-pixel inverse variance and integer 
-coverage. Like those of \cite{lang14}, our coadds have units of Vega 
+\cite{lang14}. For each tile, a stacked intensity image is created, as well as
+auxiliary maps of useful quantities such as the per-pixel inverse variance and
+integer coverage. Like those of \cite{lang14}, our coadds have units of Vega 
 nanomaggies.
 
 \section{Custom Photometric Calibration}
@@ -367,7 +368,7 @@ frames according to the procedure described below in $\S$\ref{sec:recover}.
  \end{center}
 \end{figure*}
 
-Although we were able to dramatically reduce the impact of Moon contamination
+Although we are able to dramatically reduce the impact of Moon contamination
 on our coadds with the exposure rejection procedure of $\S$\ref{sec:moon},
 we would ideally like to recover as much Moon-contaminated data as possible,
 rather than simply discard it all outright. To that end, we have added an 
@@ -411,8 +412,8 @@ by scattered light halos from bright solar system planets.
 \section{Overview of Results}
 \label{sec:results}
 
-Figures 4 and 5 show large-scale renderings of our full-depth coadds 
-over the north and south Galactic caps respectively. It is 
+Figures \ref{fig:w2_large} and 5 show large-scale renderings of our full-depth 
+coadds over the north and south Galactic caps respectively. It is 
 apparent that the Moon contamination has been completely eliminated in
 W1 and dramatically reduced in W2. It is possible that simply folding in 
 additional NEOWISER W2 frames from forthcoming data releases will diminish the 
@@ -428,7 +429,9 @@ modifications will be required to address this issue.
            rejection of Moon-contaminated frames. Bottom: same region of
            sky in our new AllWISE+NEOWISER stacks, with double the
            redundancy in sky coverage and rejection/recovery of 
-           Moon-contaminated frames.}
+           Moon-contaminated frames. It is clear that the scattered
+           moonlight has been largely removed in W2, although 
+           some traces still remain.}
  \end{center}
 \end{figure*}
 % should state approximate bounding coords in terms of lambda, beta
