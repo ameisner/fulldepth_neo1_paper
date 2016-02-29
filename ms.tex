@@ -331,8 +331,6 @@ Therefore, we additionally use ephemerides to identify all frames within
 such frames are discarded. However, we later attempt to recover these
 frames according to the procedure described below in $\S$\ref{sec:recover}.
 
-% figure showing single-tile example of removed moon contamination
-
 \section{Recovering Contaminated Frames}
 \label{sec:recover}
 
@@ -371,13 +369,24 @@ all recovered quadrants has been assembled, these are accumulated into the
 existing reference coadd to produce a final set of outputs for the tile under 
 consideration.
 
-Figure 3 provides an illustration of our polynomial background modeling
-procedure. We were able to recover 54\% of Moon-contaminated data
-in W1 and 33\% in W2. We also apply this polynomial
+Figure \ref{fig:warp_example} provides an illustration of our polynomial 
+background modeling procedure. We were able to recover 54\% of 
+Moon-contaminated data in W1 and 33\% in W2. We also apply this polynomial
 correction procedure to frames that we flagged as potentially affected
 by scattered light halos from bright solar system planets.
 
 % quadrant warping example figure
+
+\begin{figure*}
+ \begin{center}
+  \epsfig{file=05245b140_w1_q2.eps, width=7.0in}
+  \caption{\label{fig:warp_example} Illustration of the procedure by which
+           we recover Moon-contaminated exposures, as described in 
+           $\S$\ref{sec:recover}. Shown here is quadrant 2
+           of W1 exposure 05245b140. This quadrant was successfully recovered.}
+% mention which tile used as reference?
+ \end{center}
+\end{figure*}
 
 \section{Overview of Results}
 \label{sec:results}
@@ -390,9 +399,11 @@ additional NEOWISER W2 frames from forthcoming data releases will diminish the
 remaining Moon imprint to such an extent that no additional processing 
 modifications will be required to address this issue.
 
-Figure 6 shows zoom-ins of low ecliptic latitude fields which illustrate
-visually the reduction in statistical noise which has been achieved
-by doubling the number of input exposures.
+Figure \ref{fig:image_noise} shows zoom-ins of low ecliptic latitude fields 
+which illustrate visually the reduction in statistical noise which has been 
+achieved by doubling the number of input exposures.
+
+% figure showing close-up at low ecl latitude with reduced noise
 
 \begin{figure}
  \begin{center}
@@ -413,9 +424,6 @@ as a result. We have checked all 18,240 of our integer coverage maps, and find
 that every pixel has $\ge$18 epochs in W1 and $\ge$15 epochs in W2.
 
 % figure showing before/after of SGP on large scales in both W1/W2
-% figure showing close-up at low ecl latitude with reduced noise
-
-% would be fun to say how many pixels of output there are total
 
 \section{Preliminary Depth Characterization}
 \label{sec:depth}
