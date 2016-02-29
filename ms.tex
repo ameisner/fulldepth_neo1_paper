@@ -412,9 +412,9 @@ by scattered light halos from bright solar system planets.
 \section{Overview of Results}
 \label{sec:results}
 
-Figures \ref{fig:w2_large} and 5 show large-scale renderings of our full-depth 
-coadds over the north and south Galactic caps respectively. It is 
-apparent that the Moon contamination has been completely eliminated in
+Figures \ref{fig:w2_large} and \ref{fig:w1_large} show large-scale renderings 
+of our full-depth coadds over the north and south Galactic caps respectively. 
+It is apparent that the Moon contamination has been completely eliminated in
 W1 and dramatically reduced in W2. It is possible that simply folding in 
 additional NEOWISER W2 frames from forthcoming data releases will diminish the 
 remaining Moon imprint to such an extent that no additional processing 
@@ -436,16 +436,30 @@ modifications will be required to address this issue.
 \end{figure*}
 % should state approximate bounding coords in terms of lambda, beta
 
+\begin{figure*} [ht]
+ \begin{center}
+  \epsfig{file=w1_large_scale.eps, width=7.0in}
+  \caption{\label{fig:w1_large} A sub-section of the region shown in Figure
+           \ref{fig:w2_large}. Top: \cite{lang14}
+           unWISE coadds based on the AllWISE release imaging and without
+           rejection of Moon-contaminated frames. Bottom: same region of
+           sky in our new AllWISE+NEOWISER stacks, with double the
+           redundancy in sky coverage and rejection/recovery of 
+           Moon-contaminated frames. Scattered moonlight has effectively
+           been completely eliminated in W1.}
+ \end{center}
+\end{figure*}
+
 Figure \ref{fig:image_noise} shows zoom-ins of low ecliptic latitude fields 
 which illustrate visually the reduction in statistical noise which has been 
 achieved by doubling the number of input exposures.
 
 % figure showing close-up at low ecl latitude with reduced noise
 
-\begin{figure}[ht]
+\begin{figure*}[ht]
  \begin{center}
-  \epsfig{file=w1_image_noise.eps, width=3.0in}
-  \caption{\label{fig:image_noise} Illustration of reduced image noise
+  \epsfig{file=w1_image_noise.eps, width=6.0in}
+  \caption{\label{fig:image_noise} Example of reduced image noise
            in W1 for a $\sim$6$'$ cutout extracted from tile 3353m107, centered
            at ($\alpha$, $\delta$) = (335.4585$^{\circ}$, $-$10.5801$^{\circ}$). 
            This is a representative location at low ecliptic latitude and high 
@@ -453,7 +467,7 @@ achieved by doubling the number of input exposures.
            AllWISE+NEOWISER coadd relative to that of \cite{lang14}. Both
            images are rendered with identical color stretches.}
  \end{center}
-\end{figure}
+\end{figure*}
 
 Given that we imposed various frame-level cuts to eliminate time-dependent 
 artifacts, it is reasonable to ask whether we have created any zero-coverage 
