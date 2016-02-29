@@ -419,13 +419,27 @@ additional NEOWISER W2 frames from forthcoming data releases will diminish the
 remaining Moon imprint to such an extent that no additional processing 
 modifications will be required to address this issue.
 
+\begin{figure*} [ht]
+ \begin{center}
+  \epsfig{file=w2_large_scale.eps, width=7.0in}
+  \caption{\label{fig:w2_large} A large portion of the south Galactic
+           cap near the ecliptic plane is shown in W2. Top: \cite{lang14}
+           unWISE coadds based on the AllWISE release imaging and without
+           rejection of Moon-contaminated frames. Bottom: same region of
+           sky in our new AllWISE+NEOWISER stacks, with double the
+           redundancy in sky coverage and rejection/recovery of 
+           Moon-contaminated frames.}
+ \end{center}
+\end{figure*}
+% should state approximate bounding coords in terms of lambda, beta
+
 Figure \ref{fig:image_noise} shows zoom-ins of low ecliptic latitude fields 
 which illustrate visually the reduction in statistical noise which has been 
 achieved by doubling the number of input exposures.
 
 % figure showing close-up at low ecl latitude with reduced noise
 
-\begin{figure}
+\begin{figure}[ht]
  \begin{center}
   \epsfig{file=w1_image_noise.eps, width=3.0in}
   \caption{\label{fig:image_noise} Illustration of reduced image noise
@@ -438,10 +452,10 @@ achieved by doubling the number of input exposures.
  \end{center}
 \end{figure}
 
-Given that we imposed various cuts to eliminate time-dependent artifacts,
-it is reasonable to ask whether we have created any zero-coverage holes
-as a result. We have checked all 18,240 of our integer coverage maps, and find
-that every pixel has $\ge$18 epochs in W1 and $\ge$15 epochs in W2.
+Given that we imposed various frame-level cuts to eliminate time-dependent 
+artifacts, it is reasonable to ask whether we have created any zero-coverage 
+holes as a result. We have checked all 18,240 of our integer coverage maps, and
+find that every pixel has $\ge$18 epochs in W1 and $\ge$15 epochs in W2.
 
 % figure showing before/after of SGP on large scales in both W1/W2
 
@@ -486,6 +500,12 @@ amount of WISE imaging relative to the AllWISE release has resulted in improved
 W1/W2 depths and allowed for the elimination of nearly all time-dependent 
 artifacts. Our new AllWISE+NEOWISER W1/W2 coadds are publicly available
 via http://unwise.me.
+
+% could list future improvement's i'd like to implement for NEO(2+) coadds
+% for instance masking of bright star ghosts and correction
+% of bright star scattered light, possibly creation of a bitmask output
+% like that of meisner/finkbeiner dust coadds
+% also min/max removal step as added protection against outliers
 
 Although the present analysis constituted a significant data processing 
 endeavor, it represents only a small fraction of the work that must
