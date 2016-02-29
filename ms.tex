@@ -223,6 +223,13 @@ single-epoch aperture fluxes (in units of DN), which will form the basis for
 our derived time-dependent zero points. The typical calibrator source 
 contributes $\gtrsim$400 epochs of photometry.
 
+\begin{figure*} [ht]
+ \begin{center}
+  \epsfig{file=zp_by_day.eps, width=7.0in}
+  \caption{\label{fig:zp} Zero point calibration results.}
+ \end{center}
+\end{figure*}
+
 We desired a photometic calibration with time resolution of one day. To
 achieve this, we grouped our single-exposure photometric measurements in two 
 ways. First, for each 
@@ -242,8 +249,8 @@ image scaling relative to the All-Sky zero point. For the
 All-Sky phase zero points, we adopted the \verb|MAGZP| values of 20.752 in W1 
 and 19.596 in W2.
 
-Figure 1 shows our derived zero points for each WISE mission phase as 
-compared to the \verb|MAGZP| values obtained from the L1b headers. When
+Figure \ref{fig:zp} shows our derived zero points for each WISE mission phase 
+as compared to the \verb|MAGZP| values obtained from the L1b headers. When
 using our custom zero points to scale L1b images, we employ an 
 interpolation scheme based on a series of tapered polynomials and 
 error functions, meant to smooth out noise in our per-day zero point
@@ -255,6 +262,8 @@ show qualitative disagreement (e.g. both W1 and W2 during the NEOWISE
 mission phase).
 
 % do i want to mention comparison between ecliptic north and south poles ??
+
+
 
 % caption of zero point figure needs to clarify the '4band', '3band', '2band' ..
 % terminology
@@ -283,6 +292,21 @@ contamination manifests itself in L1b exposures as a strongly spatially
 variable background level, which in certain images can be smooth, but in
 others can show a very complex morphology.
 
+\begin{figure*} [ht]
+ \begin{center}
+  \epsfig{file=moon_3433p000.eps, width=6.5in}
+  \caption{\label{fig:moon_3433p000} Tile 3433p000, a 
+           1.5$^{\circ}$$\times$1.5$^{\circ}$ region of sky at low
+           ecliptic latitude which experienced strong Moon contamination 
+           during the AllWISE mission phase. Rejecting Moon-contaminated
+           frames as described in \ref{sec:moon} while including
+           two extra visits worth of NEOWISER data has dramatically
+           improved the background level uniformity relative to the
+           \cite{lang14} version of this tile. For this tile, we were
+           able to recover 58\% (18\%) of frames in W1 (W2).}
+ \end{center}
+\end{figure*}
+
 In the \cite{lang14} unWISE processing, no steps were taken specifically
 to mitigate Moon contamination in W1 and W2. However \cite{lang14} did 
 address Moon contamination in W3 and W4. \cite{lang14}
@@ -301,21 +325,6 @@ maintaining a consistent coadd background level by virtue of folding in
 NEOWISER data and applying the frame-level Moon rejection cut, for a tile with 
 severe Moon contamination during the AllWISE phase.
 
-\begin{figure*}
- \begin{center}
-  \epsfig{file=moon_3433p000.eps, width=6.5in}
-  \caption{\label{fig:moon_3433p000} Tile 3433p000, a 
-           1.5$^{\circ}$$\times$1.5$^{\circ}$ region of sky at low
-           ecliptic latitude which experienced strong Moon contamination 
-           during the AllWISE mission phase. Rejecting Moon-contaminated
-           frames as described in \ref{sec:moon} while including
-           two extra visits worth of NEOWISER data has dramatically
-           improved the background level uniformity relative to the
-           \cite{lang14} version of this tile. For this tile, we were
-           able to recover 58\% (18\%) of frames in W1 (W2).}
- \end{center}
-\end{figure*}
-
 A second, less common form of time-dependent artifact results when
 bright solar system planets (Mars, Jupiter and Saturn) pass through
 the WISE field of view. These planet sightings are prominent in the 
@@ -333,6 +342,19 @@ frames according to the procedure described below in $\S$\ref{sec:recover}.
 
 \section{Recovering Contaminated Frames}
 \label{sec:recover}
+
+% quadrant warping example figure
+
+\begin{figure*}[ht]
+ \begin{center}
+  \epsfig{file=05245b140_w1_q2.eps, width=7.0in}
+  \caption{\label{fig:warp_example} Illustration of the procedure by which
+           we recover Moon-contaminated exposures, as described in 
+           $\S$\ref{sec:recover}. Shown here is quadrant 2
+           of W1 exposure 05245b140. This quadrant was successfully recovered.}
+% mention which tile used as reference?
+ \end{center}
+\end{figure*}
 
 Although we were able to dramatically reduce the impact of Moon contamination
 on our coadds with the exposure rejection procedure of $\S$\ref{sec:moon},
@@ -374,19 +396,6 @@ background modeling procedure. We were able to recover 54\% of
 Moon-contaminated data in W1 and 33\% in W2. We also apply this polynomial
 correction procedure to frames that we flagged as potentially affected
 by scattered light halos from bright solar system planets.
-
-% quadrant warping example figure
-
-\begin{figure*}
- \begin{center}
-  \epsfig{file=05245b140_w1_q2.eps, width=7.0in}
-  \caption{\label{fig:warp_example} Illustration of the procedure by which
-           we recover Moon-contaminated exposures, as described in 
-           $\S$\ref{sec:recover}. Shown here is quadrant 2
-           of W1 exposure 05245b140. This quadrant was successfully recovered.}
-% mention which tile used as reference?
- \end{center}
-\end{figure*}
 
 \section{Overview of Results}
 \label{sec:results}
