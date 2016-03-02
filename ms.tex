@@ -140,8 +140,6 @@ from the AllWISE release ($\sim$2.8M framesets) and first-year NEOWISER release
 W1 and W2, corresponding to a total of $\sim$32M L1b image files, $\sim$71TB of 
 input image data and $\sim$33$\times$10$^{12}$ pixels.
 
-% would be fun to say how many pixels of input there are total
-
 In addition to L1b images, we also make use of several catalog-level WISE
 data products. During the photometric calibration described in 
 $\S$\ref{sec:calib}, we select sources to photometer based on the AllWISE 
@@ -153,15 +151,12 @@ Possible Association List for each mission phase
 \section{Image Coaddition Methodology}
 \label{sec:coadd}
 
-% should this section go before the ``data'' section ??
-
 To stack the W1/W2 single exposures, we make use of the \cite{lang14}
 unWISE coaddition framework, and perform our image processing with an 
 adaptation of the codebase from that work. We briefly mention
 a few of the salient aspects of the unWISE coaddition methodology here; for
 a full discussion see \cite{lang14}.
 
-% mention that we use the same tile centers as Atlas and original unWISE
 Like the official WISE Atlas coadds, unWISE processing divides the sky
 into a set of 18240 1.56$^{\circ}$$\times$1.56$^{\circ}$ tiles
 arranged along iso-declination rings. Whereas the Atlas images
@@ -207,8 +202,6 @@ assembly temperature, and have been found to differ by up to several percent
 relative to zero point variations measured empirically with single-exposure
 photometry of calibrator sources \citep[e.g.][$\S$V.3.a.iii.1]{cutri13}.
 
-% ^ list exact exp. supp. section that discusses this
-
 We therefore sought to derive an empirical relative photometric calibration
 across all mission phases accurate at the sub-percent level. To do so, we 
 analyzed repeat measurements of compact sources near the 
@@ -236,7 +229,8 @@ contributes $\gtrsim$400 epochs of photometry.
 \begin{figure*} [ht]
  \begin{center}
   \epsfig{file=zp_by_day.eps, width=7.0in}
-  \caption{\label{fig:zp} In each panel, the red dashes give the per-day
+  \caption{\label{fig:zp} Summary of our custom photometric calibration. In 
+           each panel, the red dashes give the per-day
            photometric zero points we derived based on repeat measurements
            of stars near the ecliptic poles, as described in 
            $\S$\ref{sec:calib}. The gray lines show the
@@ -280,16 +274,11 @@ interpolation scheme meant to avoid directly using our somewhat noisy per-day
 measurements. Specifically, we create a smooth approximate representation of 
 the measured per-day zero point time-series, based on a series of polynomials 
 and error functions, tapering between segments such that the resulting curve is
- smooth.
-
-
-% caption of zero point figure needs to clarify the '4band', '3band', '2band' ..
-% terminology
+smooth.
 
 \section{Removing Time-dependent Artifacts}
 \label{sec:moon}
 
-%discuss moon first and focus on moon
 The WISE scan strategy is such that a typical sky location will be 
 observed at approximately six month intervals, with each six-monthly
 ``visit'' yielding a series of $\sim$12 exposures over a $\sim$1
@@ -447,7 +436,6 @@ modifications will be required to address this issue.
            now been removed.}
  \end{center}
 \end{figure*}
-% should state approximate bounding coords in terms of lambda, beta
 
 \begin{figure*} [ht]
  \begin{center}
@@ -558,7 +546,7 @@ Doug Finkbeiner for providing access to the big-memory computers which
 were used to run coadds near the ecliptic poles. We thank Peter Nugent for 
 data management and HPC assistance. We thank many members of the DECaLS/MzLS 
 data team for valuable feedback, especially Arjun Dey, Doug Finkbeiner, John 
-Moustakas and Bob Blum.
+Moustakas, Bob Blum and Peter Eisenhardt.
 
 This research used resources of the National Energy Research Scientific 
 Computing Center, a DOE Office of Science User Facility supported by the Office
@@ -580,7 +568,5 @@ Administration. }
 
 \bibliographystyle{apj}
 \bibliography{fulldepth_neo1.bib}
-
-% cite software packages such as numpy, scipy, matplotlib ??
 
 \end{document}
