@@ -174,7 +174,7 @@ approximately doubling the number of input L1b frames relative to the
 \cite{lang14} processing.
 \item We adopt custom zero points based on repeat photometry at the ecliptic 
 poles. In contrast, the \cite{lang14} unWISE processing adopted zero points 
-based on the L1b header metadata.
+extracted from the L1b header metadata.
 \item We explicitly reject exposures contaminated by the Moon and/or solar 
 system planets. No such rejection was included in the \cite{lang14} unWISE 
 W1/W2 coadds, although these and other artifacts were addressed to some extent 
@@ -485,7 +485,7 @@ It is important to quantify the effect of increased coverage on
 the W1/W2 depths achieved by catalogs based on our AllWISE+NEOWISER coadds 
 relative to those based on the AllWISE-only coadds of \cite{lang14}. A
 complete characterization should systematically explore a range of 
-ecliptic and galactic latitudes, to consider the full spectrum of interplay
+ecliptic and Galactic latitudes, to consider the full spectrum of interplay
 between decreased statistical noise and confusion. For isolated sources in the 
 sky noise limit, we would expect a doubling of the W1/W2 imaging data
 to increase the depth in each band by 0.38 mag.
@@ -497,7 +497,7 @@ optically detected sources. On the other hand, optical sources in DECaLS DR1
 are accompanied by forced photometry of the \cite{lang14} unWISE coadds. 
 Therefore, comparing the uncertainties on W1/W2 fluxes in DR2 versus DR1 can 
 allow us to obtain estimates of the forced-photometry depth increases for 
-regions of low ecliptic and high galactic latitude.
+regions of low ecliptic and high Galactic latitude.
 
 To make such a comparison, for each of W1 and W2, we select a sample of 
 isolated DECaLS DR2 sources with \verb|type|=`PSF', \verb|wise_fracflux|$<$0.1,
