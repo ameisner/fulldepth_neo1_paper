@@ -52,10 +52,10 @@ Energy Spectroscopic Instrument (DESI) selection of luminous red galaxy and
 quasar targets. Our full-depth W1/W2 coadds are already in use within the 
 DECam Legacy Survey (DECaLS) and Mayall z-band Legacy Survey (MzLS) reduction 
 pipelines. Much more work still remains in order to fully leverage NEOWISER 
-imaging for astrophysical applications beyond the solar system.
+imaging for astrophysical applications beyond the inner solar system.
 \end{abstract}  
  
-\keywords{methods: data analysis -- surveys -- techniques: image processing} 
+\keywords{methods: data analysis -- surveys: cosmology -- techniques: image processing} 
 
 \section{Introduction}
 
@@ -405,7 +405,9 @@ Figure \ref{fig:warp_example} provides an illustration of our polynomial
 background modeling procedure applied to a single L1b quadrant. We were able to 
 recover 54\% of Moon-contaminated data in W1 and 33\% in W2. We also apply this
 polynomial correction procedure to frames that we flagged as potentially 
-affected by scattered light halos from bright solar system planets.
+affected by scattered light halos from bright solar system planets. We
+categorically exclude \verb|qual_frame|=0 exposures, making no attempt to 
+recover such frames.
 
 \section{Overview of Results}
 \label{sec:results}
@@ -445,8 +447,8 @@ modifications will be required to address this issue.
            rejection of Moon-contaminated frames. Right: same region of
            sky in our new AllWISE+NEOWISER stacks, with double the
            redundancy in sky coverage and rejection/recovery of 
-           Moon-contaminated frames. Scattered moonlight has effectively
-           been completely eliminated in W1. The
+           Moon-contaminated frames. Scattered moonlight (vertical streaks
+           in left panel) has been completely eliminated in W1. The
            two dashed red boxes show locations where Jupiter passed through
            the WISE field of view. The imprints of such planet sightings have 
            now been removed}
@@ -552,11 +554,12 @@ opposed to forced photometry) catalogs based on deep coadds which incorporate
 NEOWISER images will be needed to enable a variety of exciting discoveries.
 
 \acknowledgments{
-We thank Roc Cutri for his guidance in making use of the WISE data products. 
-We thank Stephen Bailey for downloading the L1b images to NERSC. We thank
-Doug Finkbeiner for providing access to the big-memory computers which
+We thank Roc Cutri for his guidance in making use of the WISE/NEOWISE data 
+products. We thank Stephen Bailey for downloading the L1b images to NERSC. We 
+thank Doug Finkbeiner for providing access to the big-memory computers which
 were used to run coadds near the ecliptic poles. We thank Peter Nugent for 
-data management and HPC assistance. We thank many members of the DECaLS/MzLS 
+data management and HPC assistance. We thank Ben Weaver, Debbie Bard and Rollin
+Thomas for additional HPC advice. We thank many members of the DECaLS/MzLS 
 data team for valuable feedback, especially Arjun Dey, Doug Finkbeiner, John 
 Moustakas, Bob Blum and Peter Eisenhardt.
 
